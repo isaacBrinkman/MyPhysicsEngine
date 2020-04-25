@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/UnityOrMy.unity
+    guid: c0f0112061032ed4db361e92a68120a7
+  - enabled: 1
+    path: Assets/Scenes/LevelChooser.unity
+    guid: d95d5c9aaeeaa904e8af2efe6c3180d1
+  - enabled: 1
+    path: Assets/Scenes/Stack.unity
+    guid: f2e177912be426e4d93717ab91037b01
+  - enabled: 1
+    path: Assets/Scenes/Ball Drop Test.unity
+    guid: 3d671681e1c3beb4080e343871c34099
+  - enabled: 1
+    path: Assets/Scenes/MyBallDrop.unity
+    guid: 7017f5e4d03ca3e4abb129efb20eed9b
+  m_configObjects: {}
