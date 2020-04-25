@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{E520C53C-7BE3-B420-2448-7E9EEA0C663B}</ProjectGuid>
+    <ProjectGuid>{21FF3491-DB54-D9DA-C71D-63931133D19A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -60,7 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\CircleTest.cs" />
     <Compile Include="Assets\Scripts\Physics\Physics2D\Colliders2D\MyBoxCollider2D.cs" />
     <Compile Include="Assets\Scripts\Physics\Physics2D\Colliders2D\MyCircleCollider2D.cs" />
     <Compile Include="Assets\Scripts\Physics\Physics2D\Colliders2D\MyCollider2D.cs" />
