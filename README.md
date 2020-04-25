@@ -1,6 +1,7 @@
 # MyPhysicsEngine
 Implementing physics in Unity<br />
 This was a project done for my senior year final<br />
+Poster presented also available to view under project poster.<br /> <br />
 Advisor: Dr. Choong-Soo Lee.<br />
 References: <br />
 Unity Download: https://unity3d.com/get-unity/download  <br />
