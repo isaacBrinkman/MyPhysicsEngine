@@ -47,6 +47,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -97,14 +99,13 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   mass: 1
   isKinematic: 0
+  cc: {fileID: 0}
   gravityScale: 1
-  gravTemp: 0
-  bounciness: 0.364
-  applyFriction: 0
-  frictionForce: 0
-  presentInfo: []
-  futureInfo: []
-  wallside: 0
+  frictionScale: 0
+  tempVel: {x: 0, y: 0}
+  verPause: 0
+  bounciness: 0
+  count: 0
 --- !u!114 &236334797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,4 +121,8 @@ MonoBehaviour:
   type: 
   colliding: 0
   collisionObj: {fileID: 0}
+  rb: {fileID: 0}
+  allColliders: []
+  collisionObjs: []
+  stopped: 0
   radius: 0.15

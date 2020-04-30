@@ -619,10 +619,9 @@ MonoBehaviour:
   isKinematic: 1
   cc: {fileID: 0}
   gravityScale: 0
-  bounciness: 0
+  frictionScale: 0
   tempVel: {x: 0, y: 0}
-  paused: 0
-  wallside: 0
+  verPause: 0
   count: 0
 --- !u!114 &310474224
 MonoBehaviour:
@@ -642,6 +641,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   allColliders: []
   collisionObjs: []
+  stopped: 0
   pos: 0
   sizeX: 0
   sizeY: 0
@@ -746,10 +746,9 @@ MonoBehaviour:
   isKinematic: 1
   cc: {fileID: 0}
   gravityScale: 0
-  bounciness: 0
+  frictionScale: 0
   tempVel: {x: 0, y: 0}
-  paused: 0
-  wallside: 1
+  verPause: 0
   count: 0
 --- !u!114 &352164112
 MonoBehaviour:
@@ -769,6 +768,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   allColliders: []
   collisionObjs: []
+  stopped: 0
   pos: 1
   sizeX: 0
   sizeY: 0
@@ -1222,10 +1222,9 @@ MonoBehaviour:
   isKinematic: 1
   cc: {fileID: 0}
   gravityScale: 0
-  bounciness: 0
+  frictionScale: 0
   tempVel: {x: 0, y: 0}
-  paused: 0
-  wallside: 0
+  verPause: 0
   count: 0
 --- !u!114 &700491748
 MonoBehaviour:
@@ -1245,6 +1244,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   allColliders: []
   collisionObjs: []
+  stopped: 0
   pos: 0
   sizeX: 0
   sizeY: 0

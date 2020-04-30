@@ -50,6 +50,10 @@ public class MyBoxCollider2D : MyCollider2D
     /// </summary>
     public override void CollisionHandler()
     {
+        if (collisionObjs.Length == 0)
+        {
+            return;
+        }
         Array.Clear(collisionObjs, 0, collisionObjs.Length);
         foreach (MyCollider2D col in allColliders)
         {
@@ -76,7 +80,7 @@ public class MyBoxCollider2D : MyCollider2D
             {
                 print("calc");
                 // THIS IS NOT ACTUALLY CHANGING ANYTHING
-                Collide(collisionObjs[0]);
+                //Collide(collisionObjs[0]);
                 /*
                 if (collisionObjs[0].type == "Circle")
                 {

@@ -34,6 +34,14 @@ public class MyCircleCollider2D : MyCollider2D
 
     }
 
+    void Update()
+    {
+        if(allColliders.Length < FindObjectsOfType<MyCollider2D>().Length)
+        {
+            allColliders = FindObjectsOfType<MyCollider2D>();
+        }
+    }
+
     /// <summary>
     /// Checks for collisions
     /// </summary>
@@ -107,7 +115,7 @@ public class MyCircleCollider2D : MyCollider2D
             // check if colliding with distance method
             if (Vector2.Distance(transform.position, circleCollider.transform.position) <= (radius + circleCollider.radius))
             {
-                rb.Pause();
+                //rb.Pause();
                 //cc.GetComponent<MyRGB>().Pause();
 
                 float d1 = Vector2.Distance(transform.position, circleCollider.transform.position);
@@ -160,7 +168,7 @@ public class MyCircleCollider2D : MyCollider2D
         rb.futureStatues.futVelocity = tempVel;
         //rb.futureStatues.updated = true;
         rb.futureStatues.futurePosition = transform.position /* + tempVel * Time.deltaTime*/;
-        rb.Resume();
+        //rb.Resume();
         return tempVel;
         //StartCoroutine(rb.FutureUpdate());
 

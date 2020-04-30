@@ -9,19 +9,12 @@ public class MyRGB : MonoBehaviour
     public bool isKinematic;    // whether the obj is kinematic
     public MyCollider2D cc;     // this obj's collider
     public float gravityScale;  // amount of gravity on this obj
-    [Range(0.0f, 1.0f)]
-    public float bounciness;    // the bounciness 1 is full bounce 0 us none
+    public float frictionScale; // amount of friction on this obj
     public Vector2 tempVel;
-    public bool paused;
-
+    public bool verPause;
+    public float bounciness = 1;
     private float gravTemp;     // used to change gravity
-
-
-    public enum Wall    //used to decide if a kinematic wall is vertical or horizontal
-    {
-        Vertical, Horizontal, NA
-    }
-    public Wall wallside;
+    //public float frictionScale;
 
     public class FutureStatus   // This is used as a tempory storage for velocity and position
     {
@@ -44,10 +37,7 @@ public class MyRGB : MonoBehaviour
 
     void Start()
     {
-        if (!isKinematic)       // if this obj is not kinematic then wallside is none
-        {
-            wallside = Wall.NA;
-        }
+
         futureStatues = new FutureStatus(velocity, transform.position);
         gravTemp = gravityScale;
         cc = GetComponent<MyCollider2D>();
@@ -64,8 +54,9 @@ public class MyRGB : MonoBehaviour
         futureStatues.futVelocity = velocity;
         //transform.position = futureStatues.futurePosition;
         // print here
-        Gravity();
         cc.CollisionHandler();      // on a collision need to start a coroutine
+        Gravity();
+        //Friction();
         StartCoroutine(this.FutureUpdate());
 
         // print here
@@ -73,20 +64,24 @@ public class MyRGB : MonoBehaviour
         count++;
     }
 
-    public void Resume()
-    {
-        //velocity = tempVel;
-    }
+   // public void Resume()
+   // {
+   //     //velocity = tempVel;
+   // }
 
-    public void Pause()
-    {
-   //     tempVel = velocity;
-   //     velocity = Vector2.zero;
-    }
+   // public void Pause()
+   // {
+   ////     tempVel = velocity;
+   ////     velocity = Vector2.zero;
+   // }
 
     private void Move()
     {
-        
+        //if (verPause)
+        //{
+        //    velocity.y = 0;
+        //}
+
         transform.position += (velocity) * Time.deltaTime;  // change the transform based on the velocity
         
     }
@@ -97,6 +92,7 @@ public class MyRGB : MonoBehaviour
         //print(name + "corourtine is running");
         velocity = futureStatues.futVelocity;
         Move();
+        
 
         futureStatues.updated = false;
     }
@@ -107,30 +103,32 @@ public class MyRGB : MonoBehaviour
     /// </summary>
     private void Gravity()
     {
-        if (!isKinematic)
+        // terminal velocity has been reached
+        if(velocity.y == -136)
         {
-            // this should be changed
-            if (gravTemp != 0)
-            {
-                // looking at unity y increases by .2 then jumps to 3.5 then increases by .2
-                // if colliding from the bottom then dont need to but that can be figured out later;
-                //velocity.y += (mass * -.981f)*Time.deltaTime*gravityScale);
-                if (-velocity.y > 1f && -velocity.y < 3.5f)
-                {
-                    velocity.y = -3.6f;
-                }
-                // eventually need a way to make it speed up slower as time goes on
-                velocity.y -= .2f * gravTemp;
-            }
-            if (velocity.y == 0)
-            {
-                gravTemp = 0;
-            }
-            else
-            {
-                gravTemp = gravityScale;
-            }
+            // dont add more
+            futureStatues.futVelocity += new Vector3(0, 0);
+            return;
+
         }
+        // need way for the amount added slows down as it gets faster
+        futureStatues.futVelocity += new Vector3(0, gravityScale * (-.098f));
+        //futureStatues.futVelocity += new Vector3(0, gravityScale * (-.15f));
+
+
+    }
+
+    /// <summary>
+    /// Applies friction to this object lowering value of velocity until 0
+    /// </summary>
+    private void Friction()
+    {
+        //float fricForce = frictionScale * 100;
+        if(frictionScale != 0)
+        {
+            futureStatues.futVelocity.x /= (.01f * frictionScale);
+        }
+        //futureStatues.futVelocity /= new Vector3(1, 1) * (1 / frictionScale);
     }
 
 

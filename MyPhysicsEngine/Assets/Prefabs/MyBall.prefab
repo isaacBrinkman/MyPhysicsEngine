@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8614272121143254382}
   - component: {fileID: 8614272121143254378}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: MyBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,6 +99,10 @@ MonoBehaviour:
   type: 
   colliding: 0
   collisionObj: {fileID: 0}
+  rb: {fileID: 8614272121143254378}
+  allColliders: []
+  collisionObjs: []
+  stopped: 0
   radius: 1.5
 --- !u!114 &8614272121143254378
 MonoBehaviour:
@@ -115,10 +119,9 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   mass: 1
   isKinematic: 0
-  cc: {fileID: 0}
+  cc: {fileID: 8614272121143254382}
   gravityScale: 0
-  bounciness: 0
-  info0: []
-  info1: []
-  index_time: 0
-  wallside: 0
+  frictionScale: 0
+  tempVel: {x: 0, y: 0}
+  verPause: 0
+  count: 0

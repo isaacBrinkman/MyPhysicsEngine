@@ -36,7 +36,7 @@ public class DropBallUI : MonoBehaviour
             for (int i = 0; i < count; i++)
             {
                 //float posX = Random.Range(-maxRange, maxRange);
-                float step = (5f / (count));
+                float step = (10f / (count));
                 float posX = ((i+1) * step) - 5;
                 Vector3 pos = new Vector3(posX, 2.5f);
 
@@ -50,10 +50,10 @@ public class DropBallUI : MonoBehaviour
             amount.text = curr.ToString();
             for (int i = 0; i < count; i++)
             {
-                float step = (5f / (count));
+                float step = (10f / (count));
                 float posX = ((i + 1) * step) - 5;
                 Vector3 pos = new Vector3(posX, 2.5f);
-                Instantiate(ballMyPhysics, pos, Quaternion.identity).velocity = Vector3.down * 3;
+                Instantiate(ballMyPhysics, pos, Quaternion.identity);
             }
         }
     }

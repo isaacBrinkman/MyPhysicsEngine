@@ -7,12 +7,16 @@ public class ButtonsTest : MonoBehaviour
 {
     public MyRGB myBall;
     public unityBall unityBall; // For this will have to add force
+    public MyRGB myFloor;
     public Toggle offset;
     public Toggle center;
     public Toggle sameSide;
     public Toggle unity;
+    public Toggle gravity;
+    public Toggle friction;
     public Dropdown amount;
     public Dropdown direction;
+
 
 
     public void ClearAll()
@@ -20,6 +24,10 @@ public class ButtonsTest : MonoBehaviour
         MyRGB[] all = FindObjectsOfType<MyRGB>();
         foreach(MyRGB c in all)
         {
+            if(c.name == "BlackSquare")
+            {
+                continue;
+            }
             Destroy(c.gameObject);
         }
         unityBall[] all2 = FindObjectsOfType<unityBall>();
@@ -39,8 +47,10 @@ public class ButtonsTest : MonoBehaviour
             // 2 balls
             for (int i = 0; i < amount.value + 2; i++)
             {
+                
                 // for the amount create the balls
                 col[i] = Instantiate(myBall, Vector3.zero, Quaternion.identity);
+
 
             }
             if (amount.value == 2)
@@ -51,6 +61,8 @@ public class ButtonsTest : MonoBehaviour
             Place(col);
             Offset(col);
             Direction(col);
+            Gravity(col);
+            Friction(col);
         }
         else
         {
@@ -73,6 +85,7 @@ public class ButtonsTest : MonoBehaviour
             Place(col);
             Offset(col);
             Direction(col);
+            Gravity(col);
             foreach(unityBall c in col)
             {
                 if (c == null) continue;
@@ -82,6 +95,41 @@ public class ButtonsTest : MonoBehaviour
     
     }
         
+    private void Gravity(MyRGB[] col)
+    {
+        if (gravity.isOn)
+        {
+            foreach (MyRGB c in col)
+            {
+                c.gravityScale = 1;
+            }
+            
+        }
+    }
+
+    private void Gravity(unityBall[] col)
+    {
+        if (gravity.isOn)
+        {
+            foreach (unityBall c in col)
+            {
+                c.rgb.gravityScale = 1;
+            }
+        }
+    }
+    private void Friction(MyRGB[] col)
+    {
+        if (friction.isOn)
+        {
+            
+            foreach (MyRGB c in col)
+            {
+                c.frictionScale = 1;
+            }
+
+
+        }
+    }
 
     // Places the balls where they belong
     private void Place(MyRGB[] col)

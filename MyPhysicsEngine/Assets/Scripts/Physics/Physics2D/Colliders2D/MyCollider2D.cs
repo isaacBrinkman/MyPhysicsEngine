@@ -14,9 +14,13 @@ public abstract class MyCollider2D : MonoBehaviour
     public MyRGB rb;
     public MyCollider2D[] allColliders;
     public MyCollider2D[] collisionObjs;
+    private float tempGrav;
     public bool stopped;        // when this object stops moving this will be selected
 
-
+    void Start()
+    {
+        tempGrav = rb.gravityScale;
+    }
 
 
     // Update is called once per frame
@@ -64,25 +68,45 @@ public abstract class MyCollider2D : MonoBehaviour
         // This is for testing purposes for the max ball drop
         if (cc.GetComponent<MyBoxCollider2D>() != null)
         {
-            if (cc.GetComponent<MyBoxCollider2D>().pos == MyBoxCollider2D.Pos.side)
+            if (cc.GetComponent<MyBoxCollider2D>().pos == MyBoxCollider2D.Pos.bottom)
             {
-                return new Vector3(0, rb.velocity.y);
+                if(transform.position.y > cc.transform.position.y)
+                {
+                    rb.gravityScale = 0;
+                    return (Vector3.Reflect(rb.velocity, Vector3.up)*rb.bounciness);
+                }
+                else
+                {
+                    rb.gravityScale = tempGrav;
+                    return Vector3.Reflect(rb.velocity, Vector3.down) * rb.bounciness;
+
+                }
             }
             else
             {
-                this.stopped = true;
-                return new Vector3(rb.velocity.x, 0);
+                rb.gravityScale = tempGrav;
+                if (transform.position.x < cc.transform.position.x)
+                {
+                    // then on the left of the collider
+                    return Vector3.Reflect(rb.velocity, Vector3.left);
+                }
+                else
+                {
+                    return Vector3.Reflect(rb.velocity, Vector3.right);
+
+                }
+ 
             }
         }
-        else
+        else 
         {
-            if (cc.stopped && cc.transform.position.x.Equals(this.transform.position.x) &&
-                cc.transform.position.y < this.transform.position.y)
-            {
-                this.stopped = true;
-                return new Vector3(0, 0);
-                cc.stopped = false;
-            }
+            //if (cc.stopped && cc.transform.position.x.Equals(this.transform.position.x) &&
+            //    cc.transform.position.y < this.transform.position.y)
+            //{
+            //    this.stopped = true;
+            //    cc.stopped = false;
+            //    return new Vector3(0, 0);
+            //}
             print(name);
             MyRGB ccRb = cc.GetComponent<MyRGB>();
             Vector2 v1 = new Vector2(rb.velocity.x, rb.velocity.y);
@@ -100,8 +124,8 @@ public abstract class MyCollider2D : MonoBehaviour
             rb.futureStatues.futVelocity = tempVel;
             //rb.futureStatues.updated = true;
             rb.futureStatues.futurePosition = transform.position /* + tempVel * Time.deltaTime*/;
-            rb.Resume();
-            return tempVel;
+            //rb.Resume();
+            return (tempVel)*rb.bounciness;
             //StartCoroutine(rb.FutureUpdate());
         }
     }
