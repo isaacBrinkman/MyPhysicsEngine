@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8429564
 RectTransform:
   m_ObjectHideFlags: 0
@@ -421,7 +421,6 @@ MonoBehaviour:
   sameSide: {fileID: 1275297905}
   unity: {fileID: 192751927}
   gravity: {fileID: 1196335402}
-  friction: {fileID: 1051531648}
   amount: {fileID: 1795717863}
   direction: {fileID: 8429565}
 --- !u!114 &37094259
@@ -680,7 +679,7 @@ Camera:
   m_GameObject: {fileID: 99536516}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -3896,10 +3895,7 @@ MonoBehaviour:
   isKinematic: 1
   cc: {fileID: 0}
   gravityScale: 0
-  frictionScale: 0
   tempVel: {x: 0, y: 0}
-  verPause: 0
-  count: 0
 --- !u!114 &1668147371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4170,7 +4166,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: 3
       m_Image: {fileID: 0}
-    - m_Text: 4
+    - m_Text: 5
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:

@@ -56,7 +56,7 @@ public class BallBounce : MonoBehaviour
     public void Slider()
     {
         float v = slide.value;
-        count = (int)Mathf.Round((v * 20)) + 1;
+        count = (int)Mathf.Round((v * 19)) + 1;
         dropAmount.text = count.ToString();
     }
 

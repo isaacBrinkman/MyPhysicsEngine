@@ -59,26 +59,25 @@ public abstract class MyCollider2D : MonoBehaviour
     /// <returns>The velocity vector</returns>
     protected Vector2 Collide(MyCollider2D cc)
     {
+        // currently all boxes are non moving objects so they are not affected by collisions
         if (this.GetComponent<MyBoxCollider2D>() != null)
         {
             return Vector2.zero;
         }
-        // for boxes I am cheating a bit and if the box is on the side then make velocity.x 0 and if its
-        // bottom velocity.y is 0
-        // This is for testing purposes for the max ball drop
+
         if (cc.GetComponent<MyBoxCollider2D>() != null)
         {
             if (cc.GetComponent<MyBoxCollider2D>().pos == MyBoxCollider2D.Pos.bottom)
             {
                 if(transform.position.y > cc.transform.position.y)
                 {
-                    rb.gravityScale = 0;
-                    return (Vector3.Reflect(rb.velocity, Vector3.up)*rb.bounciness);
+                    //rb.gravityScale = 0;
+                    return (Vector3.Reflect(rb.velocity, Vector3.up));
                 }
                 else
                 {
-                    rb.gravityScale = tempGrav;
-                    return Vector3.Reflect(rb.velocity, Vector3.down) * rb.bounciness;
+                    //rb.gravityScale = tempGrav;
+                    return Vector3.Reflect(rb.velocity, Vector3.down);
 
                 }
             }
@@ -98,7 +97,7 @@ public abstract class MyCollider2D : MonoBehaviour
  
             }
         }
-        else 
+        else
         {
             //if (cc.stopped && cc.transform.position.x.Equals(this.transform.position.x) &&
             //    cc.transform.position.y < this.transform.position.y)
@@ -125,7 +124,7 @@ public abstract class MyCollider2D : MonoBehaviour
             //rb.futureStatues.updated = true;
             rb.futureStatues.futurePosition = transform.position /* + tempVel * Time.deltaTime*/;
             //rb.Resume();
-            return (tempVel)*rb.bounciness;
+            return (tempVel);
             //StartCoroutine(rb.FutureUpdate());
         }
     }

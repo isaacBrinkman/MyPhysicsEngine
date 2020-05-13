@@ -13,7 +13,6 @@ public class ButtonsTest : MonoBehaviour
     public Toggle sameSide;
     public Toggle unity;
     public Toggle gravity;
-    public Toggle friction;
     public Dropdown amount;
     public Dropdown direction;
 
@@ -62,7 +61,6 @@ public class ButtonsTest : MonoBehaviour
             Offset(col);
             Direction(col);
             Gravity(col);
-            Friction(col);
         }
         else
         {
@@ -117,19 +115,7 @@ public class ButtonsTest : MonoBehaviour
             }
         }
     }
-    private void Friction(MyRGB[] col)
-    {
-        if (friction.isOn)
-        {
-            
-            foreach (MyRGB c in col)
-            {
-                c.frictionScale = 1;
-            }
 
-
-        }
-    }
 
     // Places the balls where they belong
     private void Place(MyRGB[] col)
