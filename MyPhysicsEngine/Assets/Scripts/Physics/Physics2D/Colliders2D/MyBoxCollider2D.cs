@@ -149,7 +149,7 @@ public class MyBoxCollider2D : MyCollider2D
             if (BoxOnCircleColCheck(this, circleCollider))
             {
                 // return true
-                print(name + "is colliding with" + cc.name + " " + rb.count);
+                print(name + "is colliding with" + cc.name);
                 return true;
 
             }
